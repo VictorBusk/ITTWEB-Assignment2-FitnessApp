@@ -4,13 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient , assert = require('assert');
-var dbUrl = process.env.MONGODB_URI;
+var mongodbUrl = "mongodb://127.0.0.1:27017/gruppe7";
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+// mongoose setup
+var db = mongoose.createConnection(mongodbUrl, {
+    useMongoClient: true
+});
+db.on('error', console.error.bind(console, 'DB connection error:'));
+db.once('open', function() {
+    console.log("DB connected successfully to server");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,10 +52,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-MongoClient.connect(dbUrl, function(err, db) { assert.equal(null, err);
-    console.log("Connected successfully to db server"); db.close();
 });
 
 module.exports = app;
