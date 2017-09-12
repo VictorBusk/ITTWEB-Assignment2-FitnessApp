@@ -8,9 +8,9 @@ var mongodbUrl = "mongodb://127.0.0.1:27017/gruppe7";
 var mongoose = require('mongoose');
 
 var index = require('./routes/index');
-var user = require('./routes/user');
-var exercise = require('./routes/exercises');
-var workout = require('./routes/workouts');
+var users = require('./routes/users');
+var exercises = require('./routes/exercises');
+var workouts = require('./routes/workouts');
 
 var app = express();
 
@@ -34,10 +34,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/user', user);
-app.use('/exercise', exercise);
-app.use('/workout', workout);
+app.use('/', users);
+app.use('/users', users);
+app.use('/exercises', exercises);
+app.use('/workouts', workouts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
