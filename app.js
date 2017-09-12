@@ -4,8 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongodbUrl = "mongodb://127.0.0.1:27017/gruppe7";
 var mongoose = require('mongoose');
+var mongodbUrl = "mongodb://127.0.0.1:27017/gruppe7";
+if(process.env.MONGODB_URI) {
+    console.log('Using env.MONGODB_URI as db url');
+    mongodbUrl = process.env.MONGODB_URI;
+}
 
 var index = require('./routes/index');
 var users = require('./routes/users');
