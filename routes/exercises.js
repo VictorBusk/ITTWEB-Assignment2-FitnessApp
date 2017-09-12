@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
         if (err) {
             return res.send('Error!');
         }
-        res.render('exercise', { title: 'Users', exercises: doc });
+        res.render('exercise', { title: 'Exercises', exercises: doc });
     });
 });
 
