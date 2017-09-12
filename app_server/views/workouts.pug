@@ -3,7 +3,7 @@ extends layout
 block content
     ul.breadcrumb
         li
-            a(href="../") Home
+            a(href="/") Home
         li
             a(href="/users") Users
         li.active= title
@@ -33,13 +33,11 @@ block content
                                     td= object.description
                                     td
                                         div.btn-group.btn-sm
-                                            a.btn.btn-primary.btn-sm(href="/exercises/" + object._id) Exercises
+                                            a.btn.btn-primary.btn-sm(href="/user/" + userId + "/workout/" + object._id + "/exercises" )= 'Exercises '
+                                                span.badge= object.exercises.length
                                         div.btn-group.btn-sm
-                                            a.btn.btn-warning.btn-sm(href="/workouts/edit/" + object._id) Edit
-                                            a.btn.btn-danger.btn-sm(href="/workouts/delete/" + object._id) Delete
-                            form.form-inline(method='POST' action='/workouts/')
-                                input#user(type='hidden', name='user', value= userid)
-                                input#workout(type='hidden', name='workout', value= workoutid)
+                                            a.btn.btn-danger.btn-sm(href="/user/" + userId + "/workout/" + object._id + "/remove" ) Delete
+                            form.form-inline(method='POST' action='/user/' + userId + '/workouts/create')
                                 tr
                                     td
                                         input#name.form-control(type='text', placeholder='Name' name='name' required='true' value=(undefined === workout ? '' : workout.name) )
@@ -47,4 +45,4 @@ block content
                                         input#description.form-control(type='text', placeholder='Description' name='description' required='true' value=(undefined === workout ? '' : workout.description) )
                                     td
                                         div.btn-group.btn-sm
-                                            button.btn.btn-success.btn-sm(type='submit') Save workout
+                                            button.btn.btn-success.btn-sm(type='submit') Add workout

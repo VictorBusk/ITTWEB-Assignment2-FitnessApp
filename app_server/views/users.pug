@@ -3,7 +3,7 @@ extends layout
 block content
     ul.breadcrumb
         li
-            a(href="../") Home
+            a(href="/") Home
         li.active= title
 
     if errors
@@ -29,18 +29,14 @@ block content
                                     td= object.name
                                     td
                                         div.btn-group.btn-sm
-                                            a.btn.btn-primary.btn-sm(href="/workouts/" + object._id) Workouts
+                                            a.btn.btn-primary.btn-sm(href="/user/" + object._id + "/workouts")= 'Workouts '
+                                                span.badge= object.workouts.length
                                         div.btn-group.btn-sm
-                                            a.btn.btn-warning.btn-sm(href="/users/edit/" + object._id) Edit
-                                            a.btn.btn-danger.btn-sm(href="/users/delete/" + object._id) Delete
-                            form.form-inline(method='POST' action='/users/')
-                                input#user(type='hidden', name='user', value= userid)
+                                            a.btn.btn-danger.btn-sm(href="/user/"+ object._id + "remove") Delete
+                            form.form-inline(method='POST' action='/users/create')
                                 tr
                                     td
                                         input#name.form-control(type='text', placeholder='Name' name='name' required='true' value=(undefined === user ? '' : user.name) )
                                     td
                                         div.btn-group.btn-sm
-                                            button.btn.btn-success.btn-sm(type='submit') Save user
-
-
-
+                                            button.btn.btn-success.btn-sm(type='submit') Add user
