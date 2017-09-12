@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    h1=title
+
+    h2='Create'
+    form(method='POST' action='/workout/')
+        div.form-group
+            label(for='name')
+            input#name.form-control(type='text', placeholder='Name' name='name' required='true' value=(undefined===workout ? '' : workout.name) )
+        div.form-group
+            label(for='user')
+            select#user.form-control(type='select', placeholder='Select user' name='user' required='true' )
+                for element in users
+                    option(value=element.name) #{element.name}
+        button.btn.btn-primary(type='submit') Add workout
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
