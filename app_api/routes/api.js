@@ -5,7 +5,11 @@ const ctrlWorkouts = require('../controllers/workouts');
 const ctrlExercises = require('../controllers/exercises');
 
 router.route('/users')
-    .get(ctrlUsers.listAll);
+    .get(ctrlUsers.listAll)
+    .post(ctrlUsers.create);
+
+router.route('/user/:userId')
+    .delete(ctrlUsers.remove);
 
 router.route('/user/:userId/workouts')
     .get(ctrlWorkouts.getByUserId);
