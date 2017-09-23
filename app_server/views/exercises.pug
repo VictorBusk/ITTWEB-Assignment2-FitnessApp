@@ -7,7 +7,7 @@ block content
         li
             a(href="/users") Users
         li
-            a(href="/user/" + userId + "/workouts") Workouts
+            a(href="/users/" + userId + "/workouts") Workouts
         li.active= title
 
     if errors
@@ -39,8 +39,8 @@ block content
                                     td= object.reps_time
                                     td
                                         div.btn-group.btn-sm
-                                            a.btn.btn-danger.btn-sm(href="/user/" + userId + "/workout/" + workoutId + "/exercise/" + object._id + "/remove") Delete
-                            form.form-inline(method='POST' action='/user/' + userId + '/workout/' + workoutId + '/exercises/create')
+                                            a.btn.btn-danger.btn-sm(href="/users/" + userId + "/workouts/" + workoutId + "/exercise/" + object._id + "/remove") Delete
+                            form.form-inline(method='POST' action='/users/' + userId + '/workouts/' + workoutId + '/exercises/create')
                                 tr
                                     td
                                         input#name.form-control(type='text', placeholder='Name' name='name' required='true' value=(undefined === exercise ? '' : exercise.name) )

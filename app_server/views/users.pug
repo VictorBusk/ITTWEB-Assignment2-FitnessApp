@@ -29,10 +29,10 @@ block content
                                     td= object.name
                                     td
                                         div.btn-group.btn-sm
-                                            a.btn.btn-primary.btn-sm(href="/user/" + object._id + "/workouts")= 'Workouts '
+                                            a.btn.btn-primary.btn-sm(href="/users/" + object._id + "/workouts")= 'Workouts '
                                                 span.badge= object.workouts.length
                                         div.btn-group.btn-sm
-                                            a.btn.btn-danger.btn-sm(href="/user/"+ object._id + "remove") Delete
+                                            a.btn.btn-danger.btn-sm(href="/users/" + object._id + "remove") Delete
                             form.form-inline(method='POST' action='/users/create')
                                 tr
                                     td

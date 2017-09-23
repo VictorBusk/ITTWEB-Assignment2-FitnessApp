@@ -33,11 +33,11 @@ block content
                                     td= object.description
                                     td
                                         div.btn-group.btn-sm
-                                            a.btn.btn-primary.btn-sm(href="/user/" + userId + "/workout/" + object._id + "/exercises" )= 'Exercises '
+                                            a.btn.btn-primary.btn-sm(href="/users/" + userId + "/workouts/" + object._id + "/exercises" )= 'Exercises '
                                                 span.badge= object.exercises.length
                                         div.btn-group.btn-sm
-                                            a.btn.btn-danger.btn-sm(href="/user/" + userId + "/workout/" + object._id + "/remove" ) Delete
-                            form.form-inline(method='POST' action='/user/' + userId + '/workouts/create')
+                                            a.btn.btn-danger.btn-sm(href="/users/" + userId + "/workouts/" + object._id + "/remove" ) Delete
+                            form.form-inline(method='POST' action='/users/' + userId + '/workouts/create')
                                 tr
                                     td
                                         input#name.form-control(type='text', placeholder='Name' name='name' required='true' value=(undefined === workout ? '' : workout.name) )
