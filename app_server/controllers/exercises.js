@@ -27,7 +27,7 @@ const create = function(req, res) {
             {$push: {exercises: exercise}},
             {new: true},
             (err, workout) => {
-                res.redirect('/user/' + req.params.userId + '/workout/' + req.params.workoutId + '/exercises');
+                res.redirect('/users/' + req.params.userId + '/workouts/' + req.params.workoutId + '/exercises');
             }
         );
     });
@@ -39,7 +39,7 @@ const remove = function (req, res) {
         {$pull: {exercises: req.params.id}},
         {new: true},
         (err, workout) => {
-            res.redirect('/user/' + req.params.userId + '/workout/' + req.params.workoutId + '/exercises');
+            res.redirect('/users/' + req.params.userId + '/workouts/' + req.params.workoutId + '/exercises');
         }
     );
 };
