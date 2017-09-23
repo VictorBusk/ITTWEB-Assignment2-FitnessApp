@@ -39,7 +39,7 @@ block content
                                     td= object.reps_time
                                     td
                                         div.btn-group.btn-sm
-                                            a.btn.btn-danger.btn-sm(href="/users/" + userId + "/workouts/" + workoutId + "/exercise/" + object._id + "/remove") Delete
+                                            a.btn.btn-danger.btn-sm(href="/users/" + userId + "/workouts/" + workoutId + "/exercises/" + object._id + "/remove") Delete
                             form.form-inline(method='POST' action='/users/' + userId + '/workouts/' + workoutId + '/exercises/create')
                                 tr
                                     td
