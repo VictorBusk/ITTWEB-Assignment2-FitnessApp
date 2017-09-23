@@ -7,14 +7,14 @@ const ctrlExercises = require('../controllers/exercises');
 router.get('/', ctrlUsers.listAll);
 router.get('/users', ctrlUsers.listAll);
 router.post('/users/create', ctrlUsers.create);
-router.get('/user/:id/remove/', ctrlUsers.remove);
+router.get('/users/:id/remove', ctrlUsers.remove);
 
-router.get('/user/:userId/workouts', ctrlWorkouts.getByUserId);
-router.post('/user/:userId/workouts/create', ctrlWorkouts.create);
-router.get('/user/:userId/workout/:id/remove/', ctrlWorkouts.remove);
+router.get('/users/:userId/workouts', ctrlWorkouts.getByUserId);
+router.post('/users/:userId/workouts/create', ctrlWorkouts.create);
+router.get('/users/:userId/workouts/:id/remove', ctrlWorkouts.remove);
 
-router.get('/user/:userId/workout/:workoutId/exercises', ctrlExercises.getByWorkoutId);
-router.post('/user/:userId/workout/:workoutId/exercises/create', ctrlExercises.create);
-router.get('/user/:userId/workout/:workoutId/exercise/:id/remove', ctrlExercises.remove);
+router.get('/users/:userId/workouts/:workoutId/exercises', ctrlExercises.getByWorkoutId);
+router.post('/users/:userId/workouts/:workoutId/exercises/create', ctrlExercises.create);
+router.get('/users/:userId/workouts/:workoutId/exercises/:id/remove', ctrlExercises.remove);
 
 module.exports = router;

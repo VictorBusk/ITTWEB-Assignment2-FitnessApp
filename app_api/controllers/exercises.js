@@ -6,8 +6,16 @@ const getByWorkoutId = function(req, res) {
     Workout.findById(req.params.workoutId)
         .populate('exercises')
         .exec((err, workout) => {
-            res.status(200)
-                .json(workout.exercises);
+            if (!workout) {
+                res.status(404)
+                    .json({"message": "exercises not found"});
+            } else if (err) {
+                res.status(404)
+                    .json(err);
+            } else {
+                res.status(200)
+                    .json(workout.exercises);
+            }
         });
 };
 
@@ -23,7 +31,13 @@ const create = function(req, res) {
             {$push: {exercises: exercise}},
             {new: true},
             (err, workout) => {
-                res.redirect('/user/' + req.params.userId + '/workout/' + req.params.workoutId + '/exercises');
+                if (err) {
+                    res.status(400)
+                        .json(err);
+                } else {
+                    res.status(201)
+                        .json(exercise);
+                }
             }
         );
     });
@@ -35,7 +49,13 @@ const remove = function (req, res) {
         {$pull: {exercises: req.params.id}},
         {new: true},
         (err, workout) => {
-            res.redirect('/user/' + req.params.userId + '/workout/' + req.params.workoutId + '/exercises');
+            if (err) {
+                res.status(404)
+                    .json(err);
+            } else {
+                res.status(204)
+                    .json(null);
+            }
         }
     );
 };
